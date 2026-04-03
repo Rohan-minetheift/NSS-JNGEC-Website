@@ -24,6 +24,7 @@
 
   <script>
     tailwind.config = {
+      future: { hoverOnlyWhenSupported: true },
       theme: {
         extend: {
           colors: {
@@ -60,7 +61,11 @@
         radial-gradient(circle at 50% 50%, rgba(18, 18, 20, 0.5) 0%, transparent 100%);
       color: var(--bone);
       overflow-x: hidden;
-      min-height: 100vh;
+      min-height: 100dvh;
+    }
+
+    a, button, input, select, textarea {
+      touch-action: manipulation;
     }
 
     /* Custom Toast Notification System */
@@ -1093,16 +1098,6 @@
       filter: grayscale(80%) contrast(1.2);
     }
 
-    .gallery-item:hover {
-      transform: translateY(-5px) scale(1.02);
-      z-index: 10;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.08);
-      filter: grayscale(0%) contrast(1.1);
-    }
-
     .gallery-item::after {
       content: '';
       position: absolute;
@@ -1115,8 +1110,20 @@
       border-radius: 1.5rem;
     }
 
-    .gallery-item:hover::after {
-      opacity: 1;
+    @media (hover: hover) {
+        .gallery-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            z-index: 10;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+            filter: grayscale(0%) contrast(1.1);
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
     }
 
     .tilt-element {
@@ -2006,37 +2013,37 @@
                 <label
                   class="block font-sans font-bold text-[10px] uppercase tracking-[0.3em] opacity-50 mb-4 ml-2">Legal
                   Name</label>
-                <input type="text" name="Name" class="glass-input" placeholder="FULL NAME" required>
+                <input type="text" name="Name" class="glass-input text-base md:text-sm" placeholder="FULL NAME" required>
               </div>
               <div>
                 <label
                   class="block font-sans font-bold text-[10px] uppercase tracking-[0.3em] opacity-50 mb-4 ml-2">Roll
                   Number</label>
-                <input type="text" name="RollNumber" class="glass-input" placeholder="e.g. 2101010" required>
+                <input type="text" name="RollNumber" class="glass-input text-base md:text-sm" placeholder="e.g. 2101010" required>
               </div>
               <div>
                 <label
                   class="block font-sans font-bold text-[10px] uppercase tracking-[0.3em] opacity-50 mb-4 ml-2">Father's
                   Name</label>
-                <input type="text" name="FathersName" class="glass-input" placeholder="FATHER'S NAME" required>
+                <input type="text" name="FathersName" class="glass-input text-base md:text-sm" placeholder="FATHER'S NAME" required>
               </div>
               <div>
                 <label
                   class="block font-sans font-bold text-[10px] uppercase tracking-[0.3em] opacity-50 mb-4 ml-2">Email
                   Address</label>
-                <input type="email" name="Email" class="glass-input" placeholder="student@example.com" required>
+                <input type="email" name="Email" class="glass-input text-base md:text-sm" placeholder="student@example.com" required>
               </div>
               <div>
                 <label
                   class="block font-sans font-bold text-[10px] uppercase tracking-[0.3em] opacity-50 mb-4 ml-2">Phone
                   Number</label>
-                <input type="tel" name="Phone" class="glass-input" placeholder="+91 XXXXX XXXXX" required>
+                <input type="tel" name="Phone" class="glass-input text-base md:text-sm" placeholder="+91 XXXXX XXXXX" required>
               </div>
               <div>
                 <label
                   class="block font-sans font-bold text-[10px] uppercase tracking-[0.3em] opacity-50 mb-4 ml-2">Year of
                   Study</label>
-                <select name="Year" class="glass-input appearance-none cursor-pointer" required>
+                <select name="Year" class="glass-input text-base md:text-sm appearance-none cursor-pointer" required>
                   <option value="" disabled selected class="text-pitch">Select Year</option>
                   <option value="1" class="text-pitch">1st Year</option>
                   <option value="2" class="text-pitch">2nd Year</option>
